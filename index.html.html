@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gases y Medicina | Química Inorgánica en la Salud</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-oscuro: #0d3b2e;
+    --verde-medio: #1a5c45;
+    --verde-claro: #2d8a63;
+    --verde-brillante: #3fbf8a;
+    --verde-menta: #a8e6cf;
+    --verde-suave: #d4f0e4;
+    --blanco: #f8fdf9;
+    --gris-claro: #eaf4ee;
+    --dorado: #c9a84c;
+    --dorado-suave: #f0d98c;
+    --texto-oscuro: #0a2018;
+    --texto-medio: #1f4a35;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--blanco);
+    color: var(--texto-oscuro);
+    overflow-x: hidden;
+  }
+
+  /* ============ NAVBAR ============ */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(13,59,46,0.97);
+    backdrop-filter: blur(10px);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    border-bottom: 2px solid var(--verde-brillante);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--verde-menta);
+    font-size: 1.1rem; font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .nav-links { display: flex; gap: 0.3rem; list-style: none; flex-wrap: wrap; }
+  .nav-links a {
+    color: var(--verde-menta);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.65rem;
+    border-radius: 20px;
+    transition: all 0.25s;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .nav-links a:hover { background: var(--verde-claro); color: #fff; }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 50%, #0a4a32 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 7rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(63,191,138,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 50%);
+  }
+  .hero-badge {
+    background: rgba(63,191,138,0.15);
+    border: 1px solid var(--verde-brillante);
+    color: var(--verde-menta);
+    padding: 0.4rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    color: var(--blanco);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    max-width: 850px;
+  }
+  .hero h1 span { color: var(--verde-brillante); }
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--verde-menta);
+    margin: 1.2rem auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .hero-meta {
+    display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;
+    margin: 2rem 0;
+  }
+  .hero-meta-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(63,191,138,0.25);
+    border-radius: 12px;
+    padding: 0.7rem 1.4rem;
+    color: var(--verde-menta);
+    font-size: 0.85rem;
+  }
+  .hero-meta-item strong { color: #fff; display: block; font-size: 0.95rem; }
+  .scroll-down {
+    position: absolute; bottom: 2rem;
+    animation: bounce 2s infinite;
+    color: var(--verde-brillante);
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  @keyframes bounce { 0%,100%{transform:translateY(0)}50%{transform:translateY(8px)} }
+
+  /* ============ SECTIONS ============ */
+  section { padding: 5rem 2rem; }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: var(--verde-oscuro);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .section-title span { color: var(--verde-claro); }
+  .section-desc {
+    font-size: 1.05rem;
+    color: #3a5a4a;
+    line-height: 1.8;
+    max-width: 750px;
+    margin-bottom: 3rem;
+  }
+
+  /* ============ ALT SECTION BG ============ */
+  .bg-verde { background: var(--gris-claro); }
+  .bg-oscuro {
+    background: var(--verde-oscuro);
+  }
+  .bg-oscuro .section-title { color: var(--verde-menta); }
+  .bg-oscuro .section-label { color: var(--verde-brillante); }
+  .bg-oscuro .section-desc { color: var(--verde-menta); opacity: 0.85; }
+
+  /* ============ CARDS GASES ============ */
+  .gas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .gas-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1.5px solid var(--verde-suave);
+    padding: 1.8rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .gas-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--verde-brillante);
+  }
+  .gas-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(13,59,46,0.12); }
+  .gas-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+  .gas-formula {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--verde-claro);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .gas-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--verde-oscuro);
+    margin-bottom: 0.7rem;
+  }
+  .gas-card p { font-size: 0.9rem; line-height: 1.7; color: #3a5a4a; }
+  .gas-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.9rem; }
+  .gas-tag {
+    background: var(--verde-suave);
+    color: var(--verde-medio);
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  /* ============ HIPERBÁRICA ============ */
+  .hiperbarica-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media(max-width:768px){ .hiperbarica-layout{ grid-template-columns:1fr; } }
+  .hiperbarica-visual {
+    background: linear-gradient(135deg, var(--verde-medio), var(--verde-oscuro));
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    color: var(--verde-menta);
+    position: relative;
+    overflow: hidden;
+  }
+  .hiperbarica-visual::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(63,191,138,0.1), transparent 70%);
+  }
+  .camera-svg {
+    width: 160px; height: 160px;
+    border: 3px solid var(--verde-brillante);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    position: relative; z-index: 1;
+    animation: pulse 3s infinite;
+  }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(63,191,138,0.4)}50%{box-shadow:0 0 0 20px rgba(63,191,138,0)} }
+  .ata-display {
+    font-family: 'DM Mono', monospace;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--verde-brillante);
+    position: relative; z-index: 1;
+  }
+  .ata-label { font-size: 0.8rem; opacity: 0.7; position: relative; z-index: 1; }
+  .hiperbarica-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--verde-oscuro);
+    margin-bottom: 1rem;
+  }
+  .hiperbarica-content p { font-size: 0.95rem; line-height: 1.8; color: #3a5a4a; margin-bottom: 1rem; }
+  .beneficio-list { list-style: none; }
+  .beneficio-list li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.93rem;
+    color: #2a4a3a;
+    border-bottom: 1px solid var(--verde-suave);
+  }
+  .beneficio-list li::before { content: '✦'; position: absolute; left: 0; color: var(--verde-brillante); font-size: 0.7rem; top: 0.65rem; }
+
+  /* ============ MEDICINA NUCLEAR ============ */
+  .nuclear-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.8rem;
+  }
+  .nuclear-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(63,191,138,0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: border-color 0.3s;
+  }
+  .nuclear-card:hover { border-color: var(--verde-brillante); }
+  .nuclear-card .icon { font-size: 2rem; margin-bottom: 1rem; }
+  .nuclear-card h3 { font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 0.7rem; font-size: 1.2rem; }
+  .nuclear-card p { color: var(--verde-menta); font-size: 0.9rem; line-height: 1.7; opacity: 0.9; }
+  .isotope-badge {
+    display: inline-block;
+    background: rgba(63,191,138,0.2);
+    border: 1px solid var(--verde-brillante);
+    color: var(--verde-brillante);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    padding: 0.25rem 0.8rem;
+    border-radius: 20px;
+    margin-top: 0.8rem;
+  }
+
+  /* ============ CUADRO SINÓPTICO ============ */
+  .sinoptico-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(13,59,46,0.1);
+  }
+  .sinoptico-table thead tr { background: var(--verde-oscuro); }
+  .sinoptico-table thead th {
+    padding: 1.1rem 1.3rem;
+    color: var(--verde-menta);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .sinoptico-table tbody tr { background: #fff; transition: background 0.2s; }
+  .sinoptico-table tbody tr:nth-child(even) { background: var(--gris-claro); }
+  .sinoptico-table tbody tr:hover { background: var(--verde-suave); }
+  .sinoptico-table td {
+    padding: 1rem 1.3rem;
+    font-size: 0.88rem;
+    color: #2a4a3a;
+    border-bottom: 1px solid #e0ece6;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .severity-badge {
+    padding: 0.25rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-block;
+  }
+  .sev-alta { background: #fde8e8; color: #c0392b; }
+  .sev-media { background: #fef3cd; color: #856404; }
+  .sev-baja { background: var(--verde-suave); color: var(--verde-medio); }
+
+  /* ============ EFECTOS ============ */
+  .efectos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media(max-width:600px){ .efectos-grid{ grid-template-columns:1fr; } }
+  .efecto-card {
+    border-radius: 16px;
+    padding: 2rem;
+  }
+  .efecto-pos {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border: 1.5px solid #81c784;
+  }
+  .efecto-neg {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border: 1.5px solid #ffb74d;
+  }
+  .efecto-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .efecto-pos h3 { color: #2e7d32; }
+  .efecto-neg h3 { color: #e65100; }
+  .efecto-list { list-style: none; }
+  .efecto-list li { padding: 0.5rem 0; font-size: 0.9rem; line-height: 1.6; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .efecto-list li:last-child { border: none; }
+
+  /* ============ INNOVACIONES ============ */
+  .innov-timeline { position: relative; padding-left: 2rem; }
+  .innov-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--verde-brillante), var(--verde-menta)); }
+  .innov-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; }
+  .innov-dot {
+    position: absolute; left: -2.4rem; top: 0.3rem;
+    width: 14px; height: 14px;
+    background: var(--verde-brillante);
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 3px var(--verde-claro);
+  }
+  .innov-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--verde-claro);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .innov-item h4 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--verde-oscuro); margin-bottom: 0.5rem; }
+  .innov-item p { font-size: 0.9rem; line-height: 1.7; color: #3a5a4a; }
+
+  /* ============ ARTICULO CIENTIFICO ============ */
+  .articulo-box {
+    background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+    border-radius: 20px;
+    padding: 3rem;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .articulo-box::before {
+    content: '"';
+    position: absolute;
+    top: -1rem; left: 1rem;
+    font-size: 12rem;
+    color: rgba(63,191,138,0.08);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+  .articulo-box h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--verde-menta); margin-bottom: 1rem; position: relative; z-index: 1; }
+  .articulo-box p { font-size: 0.93rem; line-height: 1.8; opacity: 0.9; margin-bottom: 1rem; position: relative; z-index: 1; }
+  .articulo-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; position: relative; z-index: 1; }
+  .articulo-tag { background: rgba(63,191,138,0.2); border: 1px solid var(--verde-brillante); color: var(--verde-brillante); padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-family: 'DM Mono', monospace; }
+
+  /* ============ VIDEO ============ */
+  .video-container {
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(13,59,46,0.3);
+  }
+  .video-container iframe { width: 100%; height: 100%; border: none; }
+
+  /* ============ CONCLUSIONES ============ */
+  .conclusiones-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+  .conclusion-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1.5px solid var(--verde-suave);
+    padding: 1.5rem;
+    transition: transform 0.3s;
+  }
+  .conclusion-card:hover { transform: translateY(-4px); }
+  .conclusion-avatar {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--verde-claro), var(--verde-brillante));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .conclusion-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--verde-oscuro); margin-bottom: 0.5rem; }
+  .conclusion-card p { font-size: 0.82rem; line-height: 1.65; color: #3a5a4a; font-style: italic; }
+
+  /* ============ BIBLIOGRAFÍA ============ */
+  .biblio-list { list-style: none; }
+  .biblio-list li {
+    padding: 0.9rem 1.2rem;
+    background: #fff;
+    border-left: 3px solid var(--verde-brillante);
+    margin-bottom: 0.8rem;
+    border-radius: 0 10px 10px 0;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #2a4a3a;
+    box-shadow: 0 2px 10px rgba(13,59,46,0.05);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--verde-oscuro);
+    color: var(--verde-menta);
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.85rem;
+    border-top: 2px solid var(--verde-claro);
+  }
+  footer strong { color: var(--verde-brillante); }
+
+  /* ============ UTILITIES ============ */
+  .text-center { text-align: center; }
+  .mb-3 { margin-bottom: 3rem; }
+  .divider { height: 1px; background: linear-gradient(to right, transparent, var(--verde-suave), transparent); margin: 2rem 0; }
+
+  /* Fade-in animation */
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* Highlight box */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--verde-suave), #fff);
+    border: 1.5px solid var(--verde-brillante);
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--texto-medio);
+  }
+  .highlight-box strong { color: var(--verde-oscuro); }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">⚗️ Quím. Inorgánica & Salud</div>
+  <ul class="nav-links">
+    <li><a href="#generalidades">Gases</a></li>
+    <li><a href="#hiperbarica">Hiperbárica</a></li>
+    <li><a href="#nuclear">Nuclear</a></li>
+    <li><a href="#sinoptico">Patologías</a></li>
+    <li><a href="#efectos">Efectos</a></li>
+    <li><a href="#innovaciones">Innovaciones</a></li>
+    <li><a href="#articulo">Artículo</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#conclusiones">Conclusiones</a></li>
+    <li><a href="#bibliografia">Bibliografía</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Innovación Científica y Aplicaciones · I Cuatrimestre 2026</div>
+  <h1>Gases y Aplicaciones<br><span>en la Medicina</span></h1>
+  <p class="hero-sub">Cámaras Hiperbáricas · Medicina Nuclear · Técnicas Químicas para Detectar y Combatir Enfermedades</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><strong>Profesor</strong>Dimitri López</div>
+    <div class="hero-meta-item"><strong>Fecha</strong>24 de abril de 2026</div>
+    <div class="hero-meta-item"><strong>Curso</strong>Innovación Científica y Aplicaciones</div>
+    <div class="hero-meta-item"><strong>Grupo</strong>Angely Arcia</div>
+  </div>
+  <a href="#generalidades" class="scroll-down">↓</a>
+</section>
+
+<!-- INTEGRANTES BANNER -->
+<div style="background:var(--verde-medio); padding: 1.2rem 2rem; text-align:center;">
+  <p style="color:var(--verde-menta); font-size:0.82rem; letter-spacing:1px; font-family:'DM Mono',monospace; text-transform:uppercase;">
+    Integrantes: Alicia Dimas · Sara Páez · Lia Hernández · Joys Llatas · Sharyeth Bernal · Frank Araúz · Valery Blandón · Angely Arcia · Gabriela Reyes · Nathalie De Gracia
+  </p>
+</div>
+
+<!-- 1. GENERALIDADES — GASES MEDICINALES -->
+<section id="generalidades" class="bg-verde">
+  <div class="section-inner fade-in">
+    <p class="section-label">Punto 1 — Generalidades</p>
+    <h2 class="section-title">Los <span>Gases Medicinales</span></h2>
+    <p class="section-desc">Los gases medicinales son sustancias gaseosas fabricadas con altos estándares de pureza y utilizadas en hospitales, clínicas y entornos de emergencia para el diagnóstico, tratamiento y soporte vital de pacientes. Su composición química precisa los clasifica como medicamentos regulados.</p>
+
+    <div class="gas-grid">
+
+      <div class="gas-card">
+        <div class="gas-icon">🫁</div>
+        <div class="gas-formula">O₂</div>
+        <h3>Oxígeno</h3>
+        <p>Gas incoloro e inodoro, esencial para la vida celular. En medicina se produce por destilación fraccionada del aire, enfriado a −183 °C. Es el gas medicinal más utilizado en el mundo. Se emplea en terapia respiratoria, reanimación, anestesia y tratamientos de quemaduras. Los pacientes críticos lo reciben mediante ventiladores, mientras los pacientes comunes lo inhalan mediante mascarillas o cánulas nasales con concentraciones controladas de 30–40%.</p>
+        <div class="gas-tags">
+          <span class="gas-tag">Oxigenoterapia</span>
+          <span class="gas-tag">UCI</span>
+          <span class="gas-tag">Anestesia</span>
+          <span class="gas-tag">Emergencias</span>
+        </div>
+      </div>
+
+      <div class="gas-card">
+        <div class="gas-icon">😴</div>
+        <div class="gas-formula">N₂O</div>
+        <h3>Óxido Nitroso</h3>
+        <p>Gas incoloro con ligero sabor dulce, conocido popularmente como "gas de la risa". Actúa como anestésico y analgésico, inhibiendo la transmisión del dolor en la médula espinal y el cerebro. Es ampliamente utilizado en procedimientos dentales, partos y cirugías menores. Se administra mezclado con oxígeno en una proporción controlada para garantizar la seguridad del paciente y evitar la hipoxia.</p>
+        <div class="gas-tags">
+          <span class="gas-tag">Anestésico</span>
+          <span class="gas-tag">Analgésico</span>
+          <span class="gas-tag">Odontología</span>
+          <span class="gas-tag">Obstetricia</span>
+        </div>
+      </div>
+
+      <div class="gas-card">
+        <div class="gas-icon">🧊</div>
+        <div class="gas-formula">N₂</div>
+        <h3>Nitrógeno</h3>
+        <p>Gas incoloro, inodoro y no inflamable. En estado líquido (−196 °C) es una herramienta poderosa en criocirugía para destruir tejidos anormales como verrugas, tumores superficiales o lesiones dérmicas. Se usa también en criogénica para conservar células, tejidos, embriones y muestras biológicas. En su forma gaseosa, impulsa instrumentos quirúrgicos orales y ortopédicos.</p>
+        <div class="gas-tags">
+          <span class="gas-tag">Criocirugía</span>
+          <span class="gas-tag">Criopreservación</span>
+          <span class="gas-tag">Dermatología</span>
+          <span class="gas-tag">Oftalmología</span>
+        </div>
+      </div>
+
+      <div class="gas-card">
+        <div class="gas-icon">🌿</div>
+        <div class="gas-formula">CO₂</div>
+        <h3>Dióxido de Carbono</h3>
+        <p>Gas con múltiples aplicaciones médicas. Se utiliza como gas de insuflación en laparoscopias para inflar la cavidad abdominal y facilitar la visualización del cirujano. También actúa como agente de contraste en angiografías vasculares, estimula el centro respiratorio en pacientes con apnea y se emplea como excipiente farmacéutico. El CO₂ medicinal purificado puede convertirse en hielo seco para crioterapia de cataratas y enfermedades vasculares.</p>
+        <div class="gas-tags">
+          <span class="gas-tag">Laparoscopia</span>
+          <span class="gas-tag">Angiografía</span>
+          <span class="gas-tag">Farmacia</span>
+          <span class="gas-tag">Crioterapia</span>
+        </div>
+      </div>
+
+      <div class="gas-card">
+        <div class="gas-icon">🧲</div>
+        <div class="gas-formula">He</div>
+        <h3>Helio</h3>
+        <p>Gas noble inerte utilizado principalmente para enfriar los electroimanes superconductores de los equipos de resonancia magnética (MRI), manteniéndolos a −269 °C. También se emplea en mezclas de heliox (helio-oxígeno) para pacientes con obstrucción respiratoria severa, ya que al ser menos denso que el aire permite una respiración más fluida. Útil también en análisis cromatográficos de laboratorio.</p>
+        <div class="gas-tags">
+          <span class="gas-tag">Resonancia Magnética</span>
+          <span class="gas-tag">Heliox</span>
+          <span class="gas-tag">Laboratorio</span>
+        </div>
+      </div>
+
+      <div class="gas-card">
+        <div class="gas-icon">⚡</div>
+        <div class="gas-formula">Ar</div>
+        <h3>Argón</h3>
+        <p>Gas noble inerte, incoloro e inodoro. En medicina se utiliza en el "cuchillo de argón", un electrobisturí especial que emplea plasma de argón para coagular tejidos durante cirugías, reduciendo el sangrado. También se usa en la ablación por plasma de argón para tratar lesiones gástricas, intestinales y hemorragias digestivas. El plasma de argón ofrece mayor precisión y menor daño tisular que los métodos tradicionales.</p>
+        <div class="gas-tags">
+          <span class="gas-tag">Cirugía</span>
+          <span class="gas-tag">Coagulación</span>
+          <span class="gas-tag">Gastroenterología</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="highlight-box">
+      <strong>🔬 Clasificación química:</strong> Los gases medicinales se dividen en tres categorías según su función: <strong>Gases Medicamento</strong> (oxígeno, óxido nitroso, aire medicinal) con acción farmacológica directa; <strong>Gases Producto Sanitario</strong> (CO₂, nitrógeno, helio) que participan en diagnóstico sin acción farmacológica; y <strong>Gases Auxiliares</strong> (aire comprimido, nitrógeno para instrumental) que permiten el funcionamiento de equipos médicos.
+    </div>
+  </div>
+</section>
+
+<!-- 2. IMPORTANCIA PARA LA VIDA — HIPERBÁRICA -->
+<section id="hiperbarica">
+  <div class="section-inner fade-in">
+    <p class="section-label">Punto 2 — Importancia para la Vida Humana</p>
+    <h2 class="section-title">Cámaras <span>Hiperbáricas</span></h2>
+    <p class="section-desc">La medicina hiperbárica representa uno de los avances más significativos en el aprovechamiento terapéutico del oxígeno. Al elevar la presión ambiental, se logra que el plasma sanguíneo disuelva cantidades de oxígeno impensables en condiciones normales.</p>
+
+    <div class="hiperbarica-layout">
+      <div class="hiperbarica-visual">
+        <div class="camera-svg">🫧</div>
+        <div class="ata-display">2–3 ATA</div>
+        <div class="ata-label">Presión de tratamiento</div>
+        <div style="margin-top:1.5rem; position:relative; z-index:1;">
+          <div style="background:rgba(255,255,255,0.08); border-radius:10px; padding:1rem; margin-top:0.5rem; font-size:0.85rem;">
+            <div style="color:var(--verde-brillante); font-weight:700;">PpO₂ Normal</div>
+            <div>~90 mmHg</div>
+            <div style="margin-top:0.5rem; color:var(--verde-brillante); font-weight:700;">PpO₂ en Cámara (3 ATA)</div>
+            <div>2000–2400 mmHg</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hiperbarica-content">
+        <h3>¿Cómo funciona y por qué es vital?</h3>
+        <p>Una cámara hiperbárica es un dispositivo médico sellado en el que el paciente respira oxígeno puro a presiones de 2 a 3 veces la presión atmosférica normal. A esta presión, el oxígeno se disuelve masivamente en el plasma sanguíneo (no solo en la hemoglobina), permitiendo que llegue a tejidos dañados, hipóxicos o con mala circulación.</p>
+        <p>Este aumento de oxigenación activa mecanismos de reparación celular, estimula la formación de nuevos vasos sanguíneos (angiogénesis), reduce la inflamación y potencia el sistema inmune para combatir infecciones.</p>
+
+        <ul class="beneficio-list">
+          <li>Acelera la cicatrización de heridas crónicas y diabéticas</li>
+          <li>Trata la enfermedad descompresiva en buzos</li>
+          <li>Combate infecciones graves por bacterias anaeróbicas</li>
+          <li>Reduce secuelas del infarto cerebral y daño neurológico</li>
+          <li>Complementa la radioterapia en tratamiento del cáncer</li>
+          <li>Mejora síntomas de fibromialgia y fatiga crónica</li>
+          <li>Trata la osteomielitis crónica refractaria</li>
+          <li>Accelera recuperación deportiva de alto rendimiento</li>
+          <li>Trata quemaduras térmicas graves</li>
+          <li>Mejora la sordera súbita y vértigo severo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TÉCNICAS QUÍMICAS DE DIAGNÓSTICO -->
+    <p class="section-label" style="margin-top:2rem;">Técnicas Químicas en Diagnóstico</p>
+    <h3 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--verde-oscuro); margin-bottom:1.5rem;">Radiación, Láser y Rayos X en Medicina</h3>
+
+    <div class="gas-grid">
+      <div class="gas-card">
+        <div class="gas-icon">🩻</div>
+        <div class="gas-formula">Rayos X / Rx</div>
+        <h3>Radiografía y TAC</h3>
+        <p>Los rayos X son radiación electromagnética de alta energía que atraviesa los tejidos blandos pero es absorbida por estructuras densas como huesos y tumores. La tomografía axial computarizada (TAC) usa rayos X en múltiples ángulos para crear imágenes tridimensionales del cuerpo, permitiendo detectar fracturas, tumores, hemorragias internas y enfermedades pulmonares con precisión millimétrica.</p>
+        <div class="gas-tags"><span class="gas-tag">Diagnóstico</span><span class="gas-tag">Ortopedia</span><span class="gas-tag">Oncología</span></div>
+      </div>
+
+      <div class="gas-card">
+        <div class="gas-icon">🧠</div>
+        <div class="gas-formula">IRM / MRI</div>
+        <h3>Resonancia Magnética</h3>
+        <p>Utiliza campos magnéticos potentes y ondas de radio para alinear los átomos de hidrógeno del cuerpo humano. Al cesar el campo magnético, los átomos emiten señales que se transforman en imágenes detalladas. No usa radiación ionizante, lo que la hace segura para el cerebro, médula espinal, articulaciones y tejidos blandos. El helio líquido es fundamental para enfriar los imanes superconductores del equipo.</p>
+        <div class="gas-tags"><span class="gas-tag">Neurología</span><span class="gas-tag">Sin radiación</span><span class="gas-tag">Articulaciones</span></div>
+      </div>
+
+      <div class="gas-card">
+        <div class="gas-icon">🔬</div>
+        <div class="gas-formula">PET / SPECT</div>
+        <h3>Tomografía por Emisión</h3>
+        <p>La PET (Tomografía por Emisión de Positrones) utiliza radiofármacos con isótopos como el flúor-18 o galio-68 que emiten positrones al desintegrarse. Los detectores capturan la radiación gamma resultante y crean imágenes metabólicas del cuerpo, permitiendo ver cómo funcionan los tejidos antes de que aparezcan cambios anatómicos. Fundamental para detección temprana de cáncer, Alzheimer y enfermedades cardíacas.</p>
+        <div class="gas-tags"><span class="gas-tag">Cáncer</span><span class="gas-tag">Alzheimer</span><span class="gas-tag">Cardiología</span></div>
+      </div>
+
+      <div class="gas-card">
+        <div class="gas-icon">💡</div>
+        <div class="gas-formula">Láser Médico</div>
+        <h3>Terapia Láser</h3>
+        <p>El láser (Light Amplification by Stimulated Emission of Radiation) en medicina utiliza luz coherente y monocromática de alta energía para cortar tejidos con precisión quirúrgica, coagular vasos sanguíneos, destruir tumores superficiales mediante terapia fotodinámica, tratar enfermedades oculares (retina, cataratas), y eliminar lesiones dérmicas. La terapia fotodinámica combina láser con fotosensibilizadores que activan oxígeno reactivo que destruye células cancerosas.</p>
+        <div class="gas-tags"><span class="gas-tag">Cirugía ocular</span><span class="gas-tag">Oncología</span><span class="gas-tag">Dermatología</span></div>
+      </div>
+
+      <div class="gas-card">
+        <div class="gas-icon">📡</div>
+        <div class="gas-formula">Ultrasonido</div>
+        <h3>Ecografía</h3>
+        <p>Usa ondas sonoras de alta frecuencia (2–18 MHz) que rebotan en los tejidos generando imágenes en tiempo real. Es segura para fetos y pacientes vulnerables por no usar radiación. Permite evaluar órganos abdominales, seguimiento del embarazo, diagnóstico cardíaco (ecocardiografía), guía de biopsias y procedimientos mínimamente invasivos. El efecto Doppler detecta el flujo sanguíneo y anomalías vasculares.</p>
+        <div class="gas-tags"><span class="gas-tag">Ginecología</span><span class="gas-tag">Embarazo</span><span class="gas-tag">Abdomen</span></div>
+      </div>
+
+      <div class="gas-card">
+        <div class="gas-icon">☢️</div>
+        <div class="gas-formula">Gammagrafía</div>
+        <h3>Cámara Gamma / SPECT</h3>
+        <p>La gammagrafía utiliza radioisótopos como el tecnecio-99m, el isótopo más empleado en diagnóstico nuclear (más de 10,000 hospitales a nivel mundial). Se administra al paciente y se acumula en órganos específicos; la cámara gamma detecta la radiación emitida y genera imágenes funcionales del tiroides, huesos, riñones y corazón, identificando enfermedades antes de que sean visibles en rayos X o TAC.</p>
+        <div class="gas-tags"><span class="gas-tag">Tc-99m</span><span class="gas-tag">Tiroides</span><span class="gas-tag">Huesos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. MEDICINA NUCLEAR -->
+<section id="nuclear" class="bg-oscuro">
+  <div class="section-inner fade-in">
+    <p class="section-label">Punto 1 (cont.) — Medicina Nuclear</p>
+    <h2 class="section-title">Medicina <span style="color:var(--verde-brillante);">Nuclear</span> en Acción</h2>
+    <p class="section-desc">La medicina nuclear es la especialidad que utiliza materiales radiactivos (radiofármacos) para diagnosticar y tratar enfermedades a nivel celular y molecular, proporcionando información funcional que ninguna otra técnica puede ofrecer.</p>
+
+    <div class="nuclear-grid">
+
+      <div class="nuclear-card">
+        <div class="icon">⚛️</div>
+        <h3>¿Qué son los Radiofármacos?</h3>
+        <p>Son medicamentos que contienen radioisótopos que emiten radiación detectable desde el exterior del cuerpo. Se administran por vía intravenosa, oral o inhalada y se acumulan en tejidos específicos según su composición química. El radioisótopo más utilizado mundialmente es el tecnecio-99m (Tc-99m), empleado en más de 10,000 hospitales para detectar cáncer, enfermedades cardíacas y afecciones óseas.</p>
+        <span class="isotope-badge">Tc-99m · F-18 · Ga-68 · I-131</span>
+      </div>
+
+      <div class="nuclear-card">
+        <div class="icon">🎯</div>
+        <h3>Teranóstica: Diagnóstico + Tratamiento</h3>
+        <p>Uno de los avances más revolucionarios es la teranóstica: el mismo radiofármaco que identifica un tumor puede modificarse para transportar dosis letales de radiación directamente a las células cancerosas, respetando el tejido sano. El actinio-225 (Ac-225) es líder en aplicaciones terapéuticas por sus propiedades emisoras alfa. Esta integración de diagnóstico y terapia simultáneos redefine el tratamiento del cáncer de próstata y tumores neuroendocrinos.</p>
+        <span class="isotope-badge">Ac-225 · Lu-177 · Y-90</span>
+      </div>
+
+      <div class="nuclear-card">
+        <div class="icon">🔭</div>
+        <h3>PET/TC Fusionada</h3>
+        <p>La combinación de la Tomografía por Emisión de Positrones con la Tomografía Computarizada produce imágenes que muestran simultáneamente la estructura anatómica (TC) y la actividad metabólica (PET). La fusión PET/TC con F-18 FDG detecta tumores cancerosos, evalúa la enfermedad de Alzheimer diferenciándola de otros tipos de demencia, y monitorea la respuesta al tratamiento. El galio-68 lidera los diagnósticos de enfermedades inflamatorias e infecciosas.</p>
+        <span class="isotope-badge">F-18 FDG · Ga-68 PSMA</span>
+      </div>
+
+      <div class="nuclear-card">
+        <div class="icon">🦋</div>
+        <h3>Tratamiento con Radioyodo (I-131)</h3>
+        <p>El yodo radiactivo I-131 es captado selectivamente por la glándula tiroides. Esta propiedad química única permite tratar el hipertiroidismo y el cáncer de tiroides con precisión extraordinaria: el isótopo destruye el tejido tiroideo enfermo sin afectar significativamente otros órganos. Es un ejemplo perfecto de cómo la química inorgánica (las propiedades de captación del yodo) se convierte en herramienta terapéutica precisa.</p>
+        <span class="isotope-badge">I-131 · Tiroides selectivo</span>
+      </div>
+
+      <div class="nuclear-card">
+        <div class="icon">❤️</div>
+        <h3>Cardiología Nuclear</h3>
+        <p>Los escaneos SPECT cardíacos utilizan radiofármacos para evaluar la perfusión miocárdica (flujo de sangre al corazón), detectar zonas de isquemia antes de que se produzca un infarto, y evaluar la viabilidad del tejido cardíaco después de un ataque. Esta información guía al cardiólogo sobre si el paciente se beneficiará de un bypass o una angioplastia. El Tc-99m sestamibi es el agente más utilizado en cardiología nuclear.</p>
+        <span class="isotope-badge">Tc-99m sestamibi · Tl-201</span>
+      </div>
+
+      <div class="nuclear-card">
+        <div class="icon">🧬</div>
+        <h3>Radioinmunoterapia</h3>
+        <p>Combina la especificidad de los anticuerpos monoclonales con la potencia de los radionúclidos. El anticuerpo busca y se une a proteínas específicas de la superficie de las células cancerosas, entregando la radiación directamente al tumor. El itrio-90 ibritumomab tiuxetan (Zevalin®) trata el linfoma no-Hodgkin en pacientes que no responden a la quimioterapia. Esta es la medicina de precisión molecular en su máxima expresión.</p>
+        <span class="isotope-badge">Y-90 · Cu-64 · Pb-212</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4. CUADRO SINÓPTICO — PATOLOGÍAS -->
+<section id="sinoptico" class="bg-verde">
+  <div class="section-inner fade-in">
+    <p class="section-label">Punto 3 — Cuadro Sinóptico</p>
+    <h2 class="section-title">Enfermedades y <span>Patologías Asociadas</span></h2>
+    <p class="section-desc">La alteración en la disponibilidad o uso de gases medicinales, la exposición inadecuada a radiaciones o la disfunción de órganos involucrados produce un amplio espectro de patologías. A continuación se presenta un resumen estructurado de las principales condiciones.</p>
+
+    <div style="overflow-x:auto;">
+    <table class="sinoptico-table">
+      <thead>
+        <tr>
+          <th>Patología / Enfermedad</th>
+          <th>Gas / Técnica Relacionada</th>
+          <th>Causa Principal</th>
+          <th>Síntomas Clave</th>
+          <th>Severidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hipoxemia</strong></td>
+          <td>O₂ (deficiencia)</td>
+          <td>Disminución del O₂ en sangre arterial por enfermedad pulmonar, altitud o anemia</td>
+          <td>Cianosis, confusión, taquicardia, disnea severa</td>
+          <td><span class="severity-badge sev-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><strong>Enfermedad Descompresiva</strong></td>
+          <td>N₂ (saturación) / Cámara Hiperbárica</td>
+          <td>Ascenso rápido en buceo: el N₂ disuelto forma burbujas en sangre y tejidos</td>
+          <td>Dolores articulares, parálisis, embolia gaseosa, shock</td>
+          <td><span class="severity-badge sev-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><strong>Toxicidad por Oxígeno</strong></td>
+          <td>O₂ (exceso)</td>
+          <td>Exposición prolongada a O₂ puro a altas presiones</td>
+          <td>Convulsiones, edema pulmonar, daño retiniano</td>
+          <td><span class="severity-badge sev-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cáncer (diagnóstico tardío)</strong></td>
+          <td>PET / Gammagrafía / Rayos X</td>
+          <td>Mutaciones celulares no detectadas a tiempo</td>
+          <td>Depende del órgano afectado; masa palpable, pérdida de peso</td>
+          <td><span class="severity-badge sev-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><strong>Hipertiroidismo</strong></td>
+          <td>I-131 (tratamiento nuclear)</td>
+          <td>Hiperactividad de la glándula tiroides (Graves, nódulos)</td>
+          <td>Taquicardia, pérdida de peso, nerviosismo, exoftalmos</td>
+          <td><span class="severity-badge sev-media">Media</span></td>
+        </tr>
+        <tr>
+          <td><strong>Osteomielitis Crónica</strong></td>
+          <td>O₂ / Cámara Hiperbárica</td>
+          <td>Infección bacteriana del hueso, resistente a antibióticos convencionales</td>
+          <td>Dolor óseo intenso, fistulas, fiebre, inflamación local</td>
+          <td><span class="severity-badge sev-media">Media</span></td>
+        </tr>
+        <tr>
+          <td><strong>Intoxicación por CO</strong></td>
+          <td>CO (gas tóxico) / O₂ hiperbárico</td>
+          <td>Inhalación de monóxido de carbono que desplaza al O₂ de la hemoglobina</td>
+          <td>Cefalea, confusión, pérdida de conciencia, muerte</td>
+          <td><span class="severity-badge sev-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><strong>Úlceras Diabéticas</strong></td>
+          <td>O₂ / Cámara Hiperbárica</td>
+          <td>Neuropatía y vasculopatía diabética que impiden la cicatrización normal</td>
+          <td>Heridas crónicas en pies, infección, gangrena si no se trata</td>
+          <td><span class="severity-badge sev-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><strong>Daño por Radiación</strong></td>
+          <td>Rayos X / Radioterapia</td>
+          <td>Exposición excesiva a radiación ionizante sin protección adecuada</td>
+          <td>Eritema, caída del cabello, náuseas, leucopenia, cáncer secundario</td>
+          <td><span class="severity-badge sev-media">Media</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cistitis por Radiación</strong></td>
+          <td>Radioterapia pélvica</td>
+          <td>Daño tisular acumulado por radioterapia en zona pélvica</td>
+          <td>Hematuria, dolor urinario, incontinencia</td>
+          <td><span class="severity-badge sev-media">Media</span></td>
+        </tr>
+        <tr>
+          <td><strong>Sordera Súbita</strong></td>
+          <td>O₂ / Cámara Hiperbárica</td>
+          <td>Isquemia coclear, infección viral o vascular</td>
+          <td>Pérdida auditiva repentina unilateral, acúfenos, vértigo</td>
+          <td><span class="severity-badge sev-media">Media</span></td>
+        </tr>
+        <tr>
+          <td><strong>Linfoma no-Hodgkin</strong></td>
+          <td>Y-90 Radioinmunoterapia</td>
+          <td>Proliferación maligna de linfocitos B o T</td>
+          <td>Adenopatías, fiebre nocturna, pérdida de peso, fatiga</td>
+          <td><span class="severity-badge sev-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><strong>Enfisema Pulmonar</strong></td>
+          <td>O₂ / Terapia respiratoria</td>
+          <td>Destrucción de los alvéolos por tabaco u otras causas</td>
+          <td>Disnea progresiva, tórax en barril, hipoxemia crónica</td>
+          <td><span class="severity-badge sev-alta">Alta</span></td>
+        </tr>
+        <tr>
+          <td><strong>Fibromialgia</strong></td>
+          <td>O₂ / Cámara Hiperbárica</td>
+          <td>Sensibilización central del sistema nervioso (causa multifactorial)</td>
+          <td>Dolor muscular difuso, fatiga, sueño no reparador, cefalea</td>
+          <td><span class="severity-badge sev-baja">Manejable</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- 5. EFECTOS POSITIVOS Y NEGATIVOS -->
+<section id="efectos">
+  <div class="section-inner fade-in">
+    <p class="section-label">Punto 4 — Efectos en la Salud</p>
+    <h2 class="section-title">Efectos <span>Positivos y Negativos</span></h2>
+    <p class="section-desc">El uso de gases medicinales y técnicas de diagnóstico nuclear implica una balanza cuidadosa entre los enormes beneficios terapéuticos y los riesgos derivados de su mal uso o exposición inadecuada.</p>
+
+    <div class="efectos-grid">
+      <div class="efecto-card efecto-pos">
+        <h3>✅ Efectos Positivos</h3>
+        <ul class="efecto-list">
+          <li><strong>Terapia con O₂:</strong> Mejora la oxigenación tisular, acelera la recuperación y es vida-salvadora en emergencias respiratorias.</li>
+          <li><strong>Cámara Hiperbárica:</strong> Regenera tejidos dañados, cura heridas crónicas, reduce secuelas neurológicas y mejora calidad de vida en fibromialgia.</li>
+          <li><strong>Criocirugía con N₂:</strong> Destruye tejidos anormales de forma precisa y mínimamente invasiva, sin grandes incisiones.</li>
+          <li><strong>Laparoscopia con CO₂:</strong> Permite cirugías mínimamente invasivas con menor dolor postoperatorio y recuperación más rápida.</li>
+          <li><strong>Medicina Nuclear (PET/SPECT):</strong> Detecta enfermedades en etapas tan tempranas que otras técnicas no pueden ver, salvando vidas.</li>
+          <li><strong>Radiofármacos terapéuticos:</strong> Eliminan células cancerosas con una precisión sin precedentes, respetando el tejido sano.</li>
+          <li><strong>Terapia fotodinámica láser:</strong> Trata cánceres superficiales sin cirugía invasiva, con altas tasas de éxito.</li>
+          <li><strong>Óxido nitroso:</strong> Control del dolor en partos y procedimientos dentales sin efectos secundarios severos a corto plazo.</li>
+        </ul>
+      </div>
+
+      <div class="efecto-card efecto-neg">
+        <h3>⚠️ Efectos Negativos / Riesgos</h3>
+        <ul class="efecto-list">
+          <li><strong>Toxicidad por O₂:</strong> Concentraciones >40% por períodos prolongados pueden causar daño pulmonar (síndrome de Paul Bert) y convulsiones.</li>
+          <li><strong>Radiación ionizante (Rx, TAC):</strong> Exposición acumulativa incrementa el riesgo de mutaciones celulares y desarrollo de cáncer a largo plazo.</li>
+          <li><strong>Residuos radiactivos:</strong> Los radiofármacos hacen que el paciente emita radiación temporalmente, requiriendo aislamiento y precauciones especiales.</li>
+          <li><strong>Óxido nitroso crónico:</strong> Exposición ocupacional prolongada en quirófanos puede causar neuropatía por inactivación de vitamina B12.</li>
+          <li><strong>Contraindicaciones hiperbáricas:</strong> Pacientes con neumotórax no tratado, epilepsia activa o claustrofobia severa no pueden usar cámara hiperbárica.</li>
+          <li><strong>CO₂ en laparoscopia:</strong> En pacientes con insuficiencia cardíaca puede provocar embolia gaseosa si se administra incorrectamente.</li>
+          <li><strong>Nitrógeno líquido:</strong> Contacto directo sin protección adecuada provoca quemaduras criogénicas graves en piel y tejidos.</li>
+          <li><strong>Láser médico:</strong> Sin protección ocular adecuada puede causar daño permanente en la retina del paciente y el personal médico.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. INNOVACIONES -->
+<section id="innovaciones" class="bg-verde">
+  <div class="section-inner fade-in">
+    <p class="section-label">Punto 5 — Innovaciones</p>
+    <h2 class="section-title">Innovaciones y <span>Descubrimientos Recientes</span></h2>
+    <p class="section-desc">La química inorgánica sigue abriendo fronteras en medicina. Las innovaciones en gases medicinales, medicina nuclear y técnicas de diagnóstico transforman radicalmente cómo diagnosticamos y tratamos enfermedades.</p>
+
+    <div class="innov-timeline">
+
+      <div class="innov-item">
+        <div class="innov-dot"></div>
+        <div class="innov-year">2024–2025 · Innovación más reciente</div>
+        <h4>Teranóstica Avanzada con Actinio-225</h4>
+        <p>El actinio-225 (Ac-225), emisor alfa, se consolida como el líder en terapia nuclear de precisión. Al unirse a moléculas guía (péptidos o anticuerpos), localiza y destruye células cancerosas con una precisión atómica. Los ensayos clínicos en curso muestran resultados prometedores en cáncer de próstata metastásico, neuroendocrino y hepático resistentes a la quimioterapia. Esta teranóstica (diagnóstico + terapia simultáneos) redefine el oncología molecular.</p>
+      </div>
+
+      <div class="innov-item">
+        <div class="innov-dot"></div>
+        <div class="innov-year">2024 · Diagnóstico por imagen</div>
+        <h4>PET Total-Body de Tiempo de Vuelo Ultrarrápido</h4>
+        <p>Los nuevos escáneres PET de cuerpo completo capturan imágenes en menos de 1 minuto con dosis de radiación mínimas. Esta tecnología, impulsada por cristales de centelleo de lutetio y detectores de silicio de última generación, permite estudiar simultáneamente múltiples órganos y obtener imágenes metabólicas en tiempo real. Especialmente útil para seguimiento de pacientes oncológicos y estudios de enfermedades sistémicas.</p>
+      </div>
+
+      <div class="innov-item">
+        <div class="innov-dot"></div>
+        <div class="innov-year">2023–2024 · Terapia fotodinámica</div>
+        <h4>Fotosensibilizadores de Segunda y Tercera Generación</h4>
+        <p>Los nuevos fotosensibilizadores basados en nanopartículas inorgánicas (óxido de titanio, porfirinas de zinc y platino) mejoran drásticamente la eficiencia de la terapia fotodinámica contra el cáncer. Se activan con luz infrarroja cercana, que penetra más profundamente en el tejido, permitiendo tratar tumores internos antes inaccesibles. Además generan oxígeno singlete (¹O₂) altamente reactivo que destruye selectivamente las células malignas.</p>
+      </div>
+
+      <div class="innov-item">
+        <div class="innov-dot"></div>
+        <div class="innov-year">2023 · Medicina hiperbárica</div>
+        <h4>Protocolo HBOT para Disfunción Cognitiva Post-COVID</h4>
+        <p>Investigadores israelíes publicaron resultados de protocolos de oxígeno hiperbárico (HBOT) aplicados a pacientes con COVID-19 prolongado (long COVID). Los pacientes experimentaron mejoras significativas en memoria, concentración y calidad de vida, asociadas a la regeneración de vasos sanguíneos cerebrales y reducción de la neuroinflamación. El O₂ a alta presión activa mecanismos de reparación cerebral que normalmente solo se activan en la infancia.</p>
+      </div>
+
+      <div class="innov-item">
+        <div class="innov-dot"></div>
+        <div class="innov-year">2022–2023 · Criocirugía</div>
+        <h4>Crioablación Guiada por Imagen para Tumores Sólidos</h4>
+        <p>La combinación de nitrógeno líquido con guía por resonancia magnética o tomografía en tiempo real permite destruir tumores hepáticos, renales y pulmonares con una aguja criogénica, sin necesidad de cirugía abierta. Las temperaturas de −196 °C crean una "bola de hielo" controlada alrededor del tumor, destruyendo las células malignas por cristalización intracelular. La recuperación es notablemente más rápida que con la cirugía convencional.</p>
+      </div>
+
+      <div class="innov-item">
+        <div class="innov-dot"></div>
+        <div class="innov-year">2021–2022 · Inteligencia Artificial</div>
+        <h4>IA en Interpretación de Imágenes Nucleares</h4>
+        <p>Algoritmos de deep learning entrenados con millones de imágenes PET/TC, gammagráficas y de resonancia magnética superan en algunos estudios la precisión diagnóstica humana. Estos sistemas detectan tumores microscópicos, cuantifican la captación de radiofármacos y predicen la respuesta al tratamiento antes de que sea clínicamente visible. La IA no reemplaza al médico nuclear, sino que lo potencia con análisis cuantitativos de alta velocidad.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 7. ARTÍCULO CIENTÍFICO -->
+<section id="articulo" class="bg-oscuro">
+  <div class="section-inner fade-in">
+    <p class="section-label">Punto 6 — Artículo Científico</p>
+    <h2 class="section-title">Artículo <span style="color:var(--verde-brillante);">Científico</span></h2>
+    <p class="section-desc">El siguiente artículo científico en inglés fue seleccionado por su relevancia directa con los temas del trabajo: la medicina nuclear y la integración de diagnóstico y tratamiento con radiofármacos.</p>
+
+    <div class="articulo-box">
+      <h3>A General Overview on the Hyperbaric Oxygen Therapy: Applications, Mechanisms and Translational Opportunities</h3>
+
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1.2rem; position:relative; z-index:1;">
+        <span style="background:rgba(63,191,138,0.15); border:1px solid var(--verde-brillante); color:var(--verde-brillante); padding:0.3rem 0.9rem; border-radius:20px; font-size:0.78rem; font-family:'DM Mono',monospace;">Ortega et al., 2021</span>
+        <span style="background:rgba(63,191,138,0.15); border:1px solid var(--verde-brillante); color:var(--verde-brillante); padding:0.3rem 0.9rem; border-radius:20px; font-size:0.78rem; font-family:'DM Mono',monospace;">Revista: Medicina (Kaunas)</span>
+        <span style="background:rgba(63,191,138,0.15); border:1px solid var(--verde-brillante); color:var(--verde-brillante); padding:0.3rem 0.9rem; border-radius:20px; font-size:0.78rem; font-family:'DM Mono',monospace;">PMC · PubMed Central</span>
+        <span style="background:rgba(63,191,138,0.15); border:1px solid var(--verde-brillante); color:var(--verde-brillante); padding:0.3rem 0.9rem; border-radius:20px; font-size:0.78rem; font-family:'DM Mono',monospace;">Peer Reviewed · En inglés</span>
+        <span style="background:rgba(63,191,138,0.15); border:1px solid var(--verde-brillante); color:var(--verde-brillante); padding:0.3rem 0.9rem; border-radius:20px; font-size:0.78rem; font-family:'DM Mono',monospace;">DOI: 10.3390/medicina57090864</span>
+      </div>
+
+      <p><strong>Autores:</strong> Ortega, M. A., Fraile-Martínez, O., García-Montero, C., Callejón-Peláez, E., Sáez, M. A., Álvarez-Mon, M. A., … & Álvarez-Mon, M. (2021).</p>
+
+      <p><strong>Resumen del artículo:</strong> Este artículo de revisión, publicado en la revista científica <em>Medicina</em> (indexada en PubMed/MEDLINE), analiza de forma exhaustiva la terapia con oxígeno hiperbárico (HBOT): sus bases históricas desde 1662, los mecanismos fisicoquímicos (Ley de Henry, Ley de Boyle-Mariotte), y sus efectos fisiológicos y farmacológicos a nivel celular. El trabajo examina todas las indicaciones clínicas aprobadas por la Undersea and Hyperbaric Medical Society (UHMS), incluyendo el tratamiento de heridas diabéticas, gangrena gaseosa, intoxicación por monóxido de carbono, osteomielitis, enfermedad descompresiva y lesiones por radiación. Además incluye una sección sobre oportunidades traslacionales emergentes como el COVID-19.</p>
+
+      <p><strong>Relevancia para el tema:</strong> El artículo conecta directamente la química inorgánica de los gases (O₂ bajo presión, CO, N₂) con sus mecanismos moleculares y aplicaciones clínicas en salud humana, lo que lo convierte en una referencia perfecta para este trabajo.</p>
+
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem; position:relative; z-index:1;">
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8465921/" target="_blank"
+           style="display:inline-flex; align-items:center; gap:0.5rem; background:var(--verde-brillante); color:var(--verde-oscuro); padding:0.8rem 1.6rem; border-radius:10px; text-decoration:none; font-weight:700; font-size:0.9rem; transition:transform 0.2s, box-shadow 0.2s;"
+           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 25px rgba(63,191,138,0.4)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          🌐 Ver artículo completo (PMC)
+        </a>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8465921/pdf/medicina-57-00864.pdf" target="_blank"
+           style="display:inline-flex; align-items:center; gap:0.5rem; background:transparent; color:var(--verde-brillante); border:2px solid var(--verde-brillante); padding:0.8rem 1.6rem; border-radius:10px; text-decoration:none; font-weight:700; font-size:0.9rem; transition:transform 0.2s, background 0.2s;"
+           onmouseover="this.style.transform='translateY(-2px)';this.style.background='rgba(63,191,138,0.1)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.background='transparent'">
+          📄 Descargar PDF
+        </a>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/34577787/" target="_blank"
+           style="display:inline-flex; align-items:center; gap:0.5rem; background:transparent; color:var(--verde-menta); border:2px solid rgba(168,230,207,0.4); padding:0.8rem 1.6rem; border-radius:10px; text-decoration:none; font-weight:600; font-size:0.9rem; transition:transform 0.2s, border-color 0.2s;"
+           onmouseover="this.style.transform='translateY(-2px)';this.style.borderColor='var(--verde-menta)'"
+           onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(168,230,207,0.4)'">
+          🔬 Ver en PubMed
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. VIDEO -->
+<section id="video" class="bg-verde">
+  <div class="section-inner fade-in text-center">
+    <p class="section-label">Punto 7 — Video</p>
+    <h2 class="section-title">Video <span>Educativo</span></h2>
+    <p class="section-desc" style="margin: 0 auto 2rem;">Video seleccionado relacionado con la aplicación de gases y técnicas químicas en medicina, mostrando innovaciones, experimentos y procesos relevantes al tema.</p>
+
+    <div class="video-container">
+      <iframe
+        src="https://www.youtube.com/embed/nU5nG0VBlpU"
+        title="Gases y Medicina - Video Educativo"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <p style="margin-top:1.2rem; font-size:0.85rem; color:#3a5a4a;">Video incluido conforme a los requisitos del trabajo: contiene información relevante sobre descubrimientos e innovaciones en el campo de la química aplicada a la medicina.</p>
+  </div>
+</section>
+
+<!-- 9. CONCLUSIONES -->
+<section id="conclusiones">
+  <div class="section-inner fade-in">
+    <p class="section-label">Punto 8 — Conclusiones</p>
+    <h2 class="section-title">Conclusión de <span>cada Integrante</span></h2>
+    <p class="section-desc">Cada miembro del grupo comparte su reflexión personal sobre el aspecto más interesante que encontró al investigar este tema.</p>
+
+    <div class="conclusiones-grid">
+
+      <div class="conclusion-card">
+        <div class="conclusion-avatar">A</div>
+        <h4>Alicia Dimas</h4>
+        <p>"Me sorprendió que el oxígeno, algo tan cotidiano, tenga propiedades terapéuticas tan poderosas cuando se administra bajo presión en la cámara hiperbárica. La capacidad de regenerar tejidos dañados con solo cambiar la presión es extraordinario."</p>
+      </div>
+
+      <div class="conclusion-card">
+        <div class="conclusion-avatar">S</div>
+        <h4>Sara Páez</h4>
+        <p>"Lo más fascinante para mí fue la teranóstica: que el mismo isótopo que detecta un tumor pueda modificarse para destruirlo. Es como usar el mapa para lanzar el misil. La química nuclear hace posible lo que parecía ciencia ficción."</p>
+      </div>
+
+      <div class="conclusion-card">
+        <div class="conclusion-avatar">L</div>
+        <h4>Lia Hernández</h4>
+        <p>"Me impresionó el nitrógeno líquido a −196 °C y su uso en criocirugía. La precisión con la que puede destruir un tumor sin dañar el tejido adyacente demuestra que la temperatura, una propiedad física-química básica, es una herramienta médica poderosa."</p>
+      </div>
+
+      <div class="conclusion-card">
+        <div class="conclusion-avatar">J</div>
+        <h4>Joys Llatas</h4>
+        <p>"Investigar los rayos X y la tomografía me hizo valorar cuánto debemos a la física de la radiación. Una simple propiedad de los electrones —emitir radiación al desacelerarse— se convierte en la base de diagnósticos que salvan millones de vidas cada año."</p>
+      </div>
+
+      <div class="conclusion-card">
+        <div class="conclusion-avatar">S</div>
+        <h4>Sharyeth Bernal</h4>
+        <p>"La terapia fotodinámica con láser me pareció increíble: usar luz para activar una molécula que produce oxígeno reactivo que destruye el cáncer. La intersección entre la química inorgánica, la óptica y la biología es poderosa y prometedora."</p>
+      </div>
+
+      <div class="conclusion-card">
+        <div class="conclusion-avatar">F</div>
+        <h4>Frank Araúz</h4>
+        <p>"Me resultó notable cómo el argón, un gas noble que no reacciona con casi nada en condiciones normales, se convierte en un bisturí de plasma en la sala de operaciones. La inerteza química puede paradójicamente ser una ventaja médica enorme."</p>
+      </div>
+
+      <div class="conclusion-card">
+        <div class="conclusion-avatar">V</div>
+        <h4>Valery Blandón</h4>
+        <p>"Lo que más me marcó fue la escala: el tecnecio-99m se usa en más de 10,000 hospitales en el mundo. Un solo isótopo radiactivo producido en reactores nucleares es el héroe silencioso detrás de millones de diagnósticos anuales."</p>
+      </div>
+
+      <div class="conclusion-card">
+        <div class="conclusion-avatar">A</div>
+        <h4>Angely Arcia</h4>
+        <p>"Este trabajo me enseñó que la química inorgánica no es abstracta ni lejana: está en cada sala de hospital, en cada diagnóstico y en cada tratamiento. Los gases que respiramos, los metales pesados y los isótopos radiactivos son herramientas médicas de vida."</p>
+      </div>
+
+      <div class="conclusion-card">
+        <div class="conclusion-avatar">G</div>
+        <h4>Gabriela Reyes</h4>
+        <p>"Me impresionó profundamente la medicina hiperbárica como tratamiento para el COVID prolongado. Que el O₂ bajo presión pueda reactivar la reparación neuronal adulta me parece uno de los hallazgos más esperanzadores de la medicina reciente."</p>
+      </div>
+
+      <div class="conclusion-card">
+        <div class="conclusion-avatar">N</div>
+        <h4>Nathalie De Gracia</h4>
+        <p>"La precisión de la radioinmunoterapia me dejó sin palabras: un anticuerpo monoclonal cargado con Y-90 que busca y destruye solo las células cancerosas. La naturaleza del sistema inmune combinada con la química nuclear es el futuro del tratamiento del cáncer."</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 10. BIBLIOGRAFÍA -->
+<section id="bibliografia" class="bg-verde">
+  <div class="section-inner fade-in">
+    <p class="section-label">Punto 9 — Referencias</p>
+    <h2 class="section-title"><span>Bibliografía</span> — Normas APA 7ª Edición</h2>
+    <p class="section-desc">Las siguientes referencias fueron consultadas para la elaboración de este trabajo, organizadas conforme a las Normas APA séptima edición.</p>
+
+    <ul class="biblio-list">
+      <li>Agencia Internacional de Energía Atómica. (2025). <em>¿Qué son los radiofármacos?</em> IAEA. https://www.iaea.org/es/newscenter/news/que-son-los-radiofarmacos</li>
+      <li>Amcaremed. (2023). <em>Tipos y usos de los gases medicinales</em>. https://amcaremed.com/knowledge/types-uses-medical-gases/?lang=es</li>
+      <li>Berg Kompressoren. (2024). <em>Gases medicinales: aplicaciones, requisitos y soluciones</em>. https://www.berg-kompressoren.de/es/blog/gases-medicinales/</li>
+      <li>CAS. (2025). <em>La medicina nuclear no solo puede diagnosticar el cáncer, sino también atacar las células cancerosas</em>. Chemical Abstracts Service. https://www.cas.org/es-es/resources/cas-insights/theranostics</li>
+      <li>Centro Médico ABC. (2024). <em>Para qué sirve la medicina nuclear</em>. https://centromedicoabc.com/revista-digital/medicina-nuclear/</li>
+      <li>Centers for Disease Control and Prevention. (2023). <em>La radiación en la atención médica: procedimientos por imágenes</em>. https://www.cdc.gov/spanish/nceh/especiales/radiacionionizante/index.html</li>
+      <li>Enlace Biomédico. (2025). <em>Gases medicinales: un pilar fundamental en la atención sanitaria</em>. https://enlacebiomedico.com/gases-medicinales-un-pilar-fundamental-en-la-atencion-sanitaria/</li>
+      <li>Hospital La Zarzuela / Sanitas. (2021). <em>Cámara hiperbárica: ¿para qué sirve y cómo funciona?</em> https://www.hospitallazarzuela.es/es/actualidad/84/camara-hiperbarica-para-que-sirve-y-que-enfermedades-trata</li>
+      <li>Instituto de Medicina Hiperbárica. (2024). <em>¿Qué es y para qué sirve una cámara hiperbárica?</em> https://www.institutomedicinahiperbarica.es/que-sirve-camara-hiperbarica-beneficios-aplicaciones/</li>
+      <li>MedlinePlus. (2023). <em>Oxigenoterapia hiperbárica</em>. Biblioteca Nacional de Medicina de EE.UU. https://medlineplus.gov/spanish/ency/article/002375.htm</li>
+      <li>MedlinePlus. (2025). <em>Terapia fotodinámica para el cáncer</em>. https://medlineplus.gov/spanish/ency/patientinstructions/000906.htm</li>
+      <li>National Institute of Biomedical Imaging and Bioengineering. (2022). <em>Medicina Nuclear</em>. NIH. https://www.nibib.nih.gov/espanol/temas-cientificos/medicina-nuclear</li>
+      <li>Novartis. (2024). <em>Nuclear Medicine Imaging</em>. https://www.nuclearmedicineandyou.com/es/nuclear-medicine-imaging</li>
+      <li>RadiologyInfo.org. (2023). <em>Medicina nuclear general</em>. https://www.radiologyinfo.org/es/info/gennuclear</li>
+      <li>Society of Nuclear Medicine and Molecular Imaging. (2024). <em>¿Qué son la Medicina Nuclear y la Imagen Molecular?</em> SNMMI. https://www.snmmi.org/AboutSNMMI/Content.aspx?ItemNumber=15644</li>
+      <li>Tedisel Medical. (2025). <em>El uso de los gases medicinales en los hospitales</em>. https://tediselmedical.com/el-uso-de-los-gases-medicinales-en-los-hospitales/</li>
+      <li>Wikipedia. (2026, enero 31). <em>Gases medicinales</em>. https://es.wikipedia.org/wiki/Gases_medicinales</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Química Inorgánica en la Salud</strong> · Grupo de Angely Arcia</p>
+  <p style="margin-top:0.5rem; opacity:0.7;">Innovación Científica y Aplicaciones · I Cuatrimestre 2026 · Prof. Dimitri López</p>
+  <p style="margin-top:0.5rem; opacity:0.5; font-size:0.75rem;">Alicia Dimas · Sara Páez · Lia Hernández · Joys Llatas · Sharyeth Bernal · Frank Araúz · Valery Blandón · Angely Arcia · Gabriela Reyes · Nathalie De Gracia</p>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
